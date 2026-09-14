@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-cicd-app
+  labels:
+    app: test-cicd-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: test-cicd-app
+  template:
+    metadata:
+      labels:
+        app: test-cicd-app
+    spec:
+      containers:
+      - name: react-app
+        image: test-cicd-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 2
+          periodSeconds: 5

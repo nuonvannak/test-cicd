@@ -8,10 +8,13 @@ export default function App() {
     <div className="container">
       {/* Header */}
       <header className="header">
-        <div style={{ marginBottom: '1rem' }}>
+        <div style={{ marginBottom: '1rem', display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
           <span className="badge badge-live">
             <span className="pulse-dot"></span>
             Kubernetes Pod Live
+          </span>
+          <span className="badge" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8', borderColor: 'rgba(56, 189, 248, 0.3)' }}>
+            🚀 Release v2.0 (Automated Webhook)
           </span>
         </div>
         <h1>CI/CD Automated Deployment</h1>
